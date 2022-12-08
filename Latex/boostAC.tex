@@ -1,0 +1,227 @@
+\documentclass[12pt]{report}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\begin{document}
+boost
+
+
+Basic Equations
+\begin{align}
+I_{ref}(\theta) = \frac{2 P_{o} \sin{\left(\theta \right)}}{V_{pk}}\\
+\delta_{Q}(\theta) = 1 - \frac{V_{pk} \sin{\left(\theta \right)}}{V_{o}}\\
+\delta_{D}(\theta) = \frac{V_{pk} \sin{\left(\theta \right)}}{V_{o}}\\
+\end{align}
+
+Bilateral Triangle $\Delta^B$ 
+
+A = triangle peak-to-peak 
+
+DT = time of triangle peak
+\begin{align}
+\Delta^B_{rms}(A,B,D,T) = \frac{\sqrt{\int\limits_{0}^{D T} \left(- \frac{A}{2} + \frac{A t}{D T}\right)^{2}\, dt + \int\limits_{0}^{T \left(1 - D\right)} \left(- \frac{A}{2} + \frac{A t}{T \left(1 - D\right)}\right)^{2}\, dt}}{\sqrt{T}}\\
+\Delta^B_{rms}(A,B,D,T) = \frac{A}{2 \sqrt{3}}\\
+\Delta^B_{avg}(A,B,D,T) = \frac{\int\limits_{0}^{D T} \left(- \frac{A}{2} + \frac{A t}{D T}\right)\, dt + \int\limits_{0}^{T \left(1 - D\right)} \left(- \frac{A}{2} + \frac{A t}{T \left(1 - D\right)}\right)\, dt}{T}\\
+\Delta^B_{avg}(A,B,D,T) = 0\\
+\end{align}
+
+Elevated Right Triangle $\Delta^R$ 
+
+B = Tri Y Midpoint 
+
+A = triangle height 
+
+DT = time of triangle peak
+\begin{align}
+\Delta^R_{rms}(A,B,D,T) = \frac{\sqrt{\int\limits_{0}^{D T} \left(- \frac{A}{2} + \frac{A t}{D T} + B\right)^{2}\, dt}}{\sqrt{T}}\\
+\Delta^R_{rms}(A,B,D,T) = \frac{\sqrt{D} \sqrt{A^{2} + 12 B^{2}}}{2 \sqrt{3}}\\
+\Delta^R_{avg}(A,B,D,T) = \frac{\int\limits_{0}^{D T} \left(- \frac{A}{2} + \frac{A t}{D T} + B\right)\, dt}{T}\\
+\Delta^R_{avg}(A,B,D,T) = B D\\
+\end{align}
+
+Inductor rms simple
+\begin{align}
+I_{ref,rms} = \frac{\sqrt{\int\limits_{0}^{\pi} \frac{4 P_{o}^{2} \sin^{2}{\left(\theta \right)}}{V_{pk}^{2}}\, d\theta}}{\sqrt{\pi}}\\
+I_{ref,rms} = \frac{\sqrt{2} P_{o}}{V_{pk}}\\
+I_{L,rms} = I_{ref,rms}\\
+\end{align}
+
+Inductor rms with ripple
+\begin{align}
+\Delta i_{L,pp}(\theta) = v_{In}(\theta)\frac{\delta_{Q}(\theta)}{Lf}\\
+\Delta i_{L,pp}(\theta) = \frac{V_{pk} \left(1 - \frac{V_{pk} \sin{\left(\theta \right)}}{V_{o}}\right) \sin{\left(\theta \right)}}{L f}\\
+\Delta i_{L,rms,t}(\theta) = \Delta^B_{rms}(A=i_{LR,pp})\\
+\Delta i_{L,rms,t}(\theta) = \frac{V_{pk} \left|{V_{o} - V_{pk} \sin{\left(\theta \right)}}\right| \left|{\sin{\left(\theta \right)}}\right|}{2 \sqrt{3} L V_{o} f}\\
+\Delta I_{L,rms} = \frac{\sqrt{\int\limits_{0}^{\pi} \frac{V_{pk}^{2} \left(V_{o} - V_{pk} \sin{\left(\theta \right)}\right)^{2} \sin^{2}{\left(\theta \right)}}{12 L^{2} V_{o}^{2} f^{2}}\, d\theta}}{\sqrt{\pi}}\\
+\Delta I_{L,rms} = \frac{V_{pk} \sqrt{12 \pi V_{o}^{2} - 64 V_{o} V_{pk} + 9 \pi V_{pk}^{2}}}{12 \sqrt{2} \sqrt{\pi} L V_{o} f}\\
+I_{L,rms} = \sqrt{I_{ref,rms}^2 + \Delta I_{L,rms}^2}\\
+I_{L,rms} = \frac{\sqrt{576 \pi L^{2} P_{o}^{2} V_{o}^{2} f^{2} + 12 \pi V_{o}^{2} V_{pk}^{4} - 64 V_{o} V_{pk}^{5} + 9 \pi V_{pk}^{6}}}{12 \sqrt{2} \sqrt{\pi} L V_{o} V_{pk} f}\\
+\end{align}
+
+Bridge rms simple
+\begin{align}
+I_{B,rms} = I_{L,rms}\\
+I_{B,rms} = \frac{\sqrt{2} P_{o}}{V_{pk}}\\
+\end{align}
+
+Bridge rms with ripple
+\begin{align}
+I_{B,rms} = I_{L,rms}\\
+I_{B,rms} = \frac{\sqrt{576 \pi L^{2} P_{o}^{2} V_{o}^{2} f^{2} + 12 \pi V_{o}^{2} V_{pk}^{4} - 64 V_{o} V_{pk}^{5} + 9 \pi V_{pk}^{6}}}{12 \sqrt{2} \sqrt{\pi} L V_{o} V_{pk} f}\\
+\end{align}
+
+Bridge avg
+\begin{align}
+I_{B,avg} = \frac{\int\limits_{0}^{\pi} \frac{2 P_{o} \sin{\left(\theta \right)}}{V_{pk}}\, d\theta}{\pi}\\
+I_{B,avg} = \frac{4 P_{o}}{\pi V_{pk}}\\
+\end{align}
+
+Switch rms simple
+\begin{align}
+i_{Q,rms,t}(\theta) = \Delta^R_{rms} \big(B=i_{ref}, A=0, D=\delta_{Q} \big)\\
+i_{Q,rms,t}(\theta) = \frac{2 P_{o} \sqrt{V_{o} - V_{pk} \sin{\left(\theta \right)}} \left|{\sin{\left(\theta \right)}}\right|}{\sqrt{V_{o}} V_{pk}}\\
+I_{Q,rms} = \frac{\sqrt{\int\limits_{0}^{\pi} \frac{4 P_{o}^{2} \left(V_{o} - V_{pk} \sin{\left(\theta \right)}\right) \sin^{2}{\left(\theta \right)}}{V_{o} V_{pk}^{2}}\, d\theta}}{\sqrt{\pi}}\\
+I_{Q,rms} = \frac{P_{o} \sqrt{6 \pi V_{o} - 16 V_{pk}}}{\sqrt{3} \sqrt{\pi} \sqrt{V_{o}} V_{pk}}\\
+\end{align}
+
+Switch rms with ripple
+\begin{align}
+i_{Q,rms,t}(\theta) = \Delta^R_{rms} \big(B=i_{ref},A=i_{LR,pp},D=\delta_{Q} \big)\\
+\text{\scalebox{0.75}{$i_{Q,rms,t}(\theta) = \frac{\sqrt{\left(V_{o} - V_{pk} \sin{\left(\theta \right)}\right) \left(48 L^{2} P_{o}^{2} V_{o}^{2} f^{2} + V_{o}^{2} V_{pk}^{4} - 2 V_{o} V_{pk}^{5} \sin{\left(\theta \right)} + V_{pk}^{6} \sin^{2}{\left(\theta \right)}\right)} \left|{\sin{\left(\theta \right)}}\right|}{2 \sqrt{3} L V_{o}^{\frac{3}{2}} V_{pk} f}$}}\\
+I_{Q,rms} = \frac{\sqrt{\int\limits_{0}^{\pi} \frac{\left(V_{o} - V_{pk} \sin{\left(\theta \right)}\right) \left(48 L^{2} P_{o}^{2} V_{o}^{2} f^{2} + V_{o}^{2} V_{pk}^{4} - 2 V_{o} V_{pk}^{5} \sin{\left(\theta \right)} + V_{pk}^{6} \sin^{2}{\left(\theta \right)}\right) \sin^{2}{\left(\theta \right)}}{12 L^{2} V_{o}^{3} V_{pk}^{2} f^{2}}\, d\theta}}{\sqrt{\pi}}\\
+\text{\scalebox{0.75}{$I_{Q,rms} = \frac{\sqrt{2880 \pi L^{2} P_{o}^{2} V_{o}^{3} f^{2} - 7680 L^{2} P_{o}^{2} V_{o}^{2} V_{pk} f^{2} + 60 \pi V_{o}^{3} V_{pk}^{4} - 480 V_{o}^{2} V_{pk}^{5} + 135 \pi V_{o} V_{pk}^{6} - 128 V_{pk}^{7}}}{12 \sqrt{10} \sqrt{\pi} L V_{o}^{\frac{3}{2}} V_{pk} f}$}}\\
+\end{align}
+
+Switch avg
+\begin{align}
+i_{Q,avg,t}(\theta) = \Delta^R_{avg} \big(B=i_{ref}, D=\delta_{Q} \big)\\
+I_{Q,avg,t} = \frac{2 P_{o} \left|{V_{o} - V_{pk} \sin{\left(\theta \right)}}\right| \left|{\sin{\left(\theta \right)}}\right|}{V_{o} V_{pk}}\\
+I_{Q,avg} = \frac{\int\limits_{0}^{\pi} \frac{2 P_{o} \left(1 - \frac{V_{pk} \sin{\left(\theta \right)}}{V_{o}}\right) \sin{\left(\theta \right)}}{V_{pk}}\, d\theta}{\pi}\\
+I_{Q,avg} = \frac{P_{o} \left|{4 V_{o} - \pi V_{pk}}\right|}{\pi V_{o} V_{pk}}\\
+\end{align}
+
+Switch switching loss timings
+\begin{align}
+t_{IR} = t_{2} - t_{1} = R_{g}C_{iss,test}\text{ln}\bigg(\frac{V_{gs,max}-V_{th}}{V_{gs,max}-V_{gp}}\bigg)\\
+t_{VF} = t_{3} = \frac{R_{g}Q_{gd,test}V_{ds,max}}{V_{ds,test}(V_{gs,max} - V_{gp})}\\
+t_{VR} = t_{5} = \frac{R_{g}Q_{gd,test}V_{ds,max}}{V_{ds,test}V_{gp}}\\
+t_{IF} = t_{6} = R_{g}C_{iss,test}\text{ln}\bigg(\frac{V_{gp}}{V_{th}}\bigg)\\
+t_{ON} = t_{IR} + t_{VF}\\
+t_{OFF} = t_{IF} + t_{VR}\\
+\end{align}
+
+Switch switching loss simple
+\begin{align}
+P_{Q,sw,t}(\theta) = \frac{V_{o}f}{2}I_{ref}(\theta)(t_{ON} + t_{OFF})\\
+P_{Q,sw,t}(\theta) = \frac{P_{o} V_{o} f \left(T_{OFF} + T_{ON}\right) \left|{\sin{\left(\theta \right)}}\right|}{V_{pk}}\\
+P_{Q,sw} = \frac{\int\limits_{0}^{\pi} \frac{P_{o} V_{o} f \left(T_{OFF} + T_{ON}\right) \left|{\sin{\left(\theta \right)}}\right|}{V_{pk}}\, d\theta}{\pi}\\
+P_{Q,sw} = \frac{2 P_{o} V_{o} f \left(T_{OFF} + T_{ON}\right)}{\pi V_{pk}}\\
+\end{align}
+
+Switch switching loss with ripple
+\begin{align}
+P_{Q,sw,t}(\theta) = \frac{V_{o}f}{2}\bigg(\big(I_{ref}(\theta)-\Delta i_{L,pp}(\theta)\big)t_{ON} + \big(I_{ref}(\theta)+\Delta i_{L,pp}(\theta)\big)t_{OFF}\bigg)\\
+\text{\scalebox{0.75}{$P_{Q,sw,t}(\theta) = \frac{V_{o} f \left(T_{OFF} \left(\frac{2 P_{o} \sin{\left(\theta \right)}}{V_{pk}} + \frac{V_{pk} \left(1 - \frac{V_{pk} \sin{\left(\theta \right)}}{V_{o}}\right) \sin{\left(\theta \right)}}{2 L f}\right) + T_{ON} \left(\frac{2 P_{o} \sin{\left(\theta \right)}}{V_{pk}} - \frac{V_{pk} \left(1 - \frac{V_{pk} \sin{\left(\theta \right)}}{V_{o}}\right) \sin{\left(\theta \right)}}{2 L f}\right)\right)}{2}$}}\\
+P_{Q,sw} = \frac{\int\limits_{0}^{\pi} \frac{V_{o} f \left(T_{OFF} \left(\frac{2 P_{o} \sin{\left(\theta \right)}}{V_{pk}} + \frac{V_{pk} \left(1 - \frac{V_{pk} \sin{\left(\theta \right)}}{V_{o}}\right) \sin{\left(\theta \right)}}{2 L f}\right) + T_{ON} \left(\frac{2 P_{o} \sin{\left(\theta \right)}}{V_{pk}} - \frac{V_{pk} \left(1 - \frac{V_{pk} \sin{\left(\theta \right)}}{V_{o}}\right) \sin{\left(\theta \right)}}{2 L f}\right)\right)}{2}\, d\theta}{\pi}\\
+\end{align}
+
+
+\begin{align}
+\text{\scalebox{0.35}{$P_{Q,sw} = \frac{\left|{16 L P_{o} T_{OFF} V_{o} f + 16 L P_{o} T_{ON} V_{o} f + 4 T_{OFF} V_{o} V_{pk}^{2} - \pi T_{OFF} V_{pk}^{3} - 4 T_{ON} V_{o} V_{pk}^{2} + \pi T_{ON} V_{pk}^{3}}\right|}{8 \pi L V_{pk}}$}}\\
+\end{align}
+
+Switch switching loss output capacitance
+\begin{align}
+P_{Q,sw,c}(\theta) = \frac{C_{oss} V_{o}^{2} f}{2}\\
+P_{Q,sw,c} = \frac{\int\limits_{0}^{\pi} \frac{C_{oss} V_{o}^{2} f}{2}\, d\theta}{\pi}\\
+P_{Q,sw,c} = \frac{C_{oss} V_{o}^{2} f}{2}\\
+\end{align}
+
+Boost Diode simple
+\begin{align}
+i_{D,rms,t}(\theta) = \Delta^R_{rms} \big(B=i_{ref}, A=0, D=\delta_{D} \big)\\
+i_{D,rms,t}(\theta) = \frac{2 P_{o} \sqrt{\sin^{3}{\left(\theta \right)}}}{\sqrt{V_{o}} \sqrt{V_{pk}}}\\
+I_{D,rms} = \frac{\sqrt{\int\limits_{0}^{\pi} \frac{4 P_{o}^{2} \sin^{3}{\left(\theta \right)}}{V_{o} V_{pk}}\, d\theta}}{\sqrt{\pi}}\\
+I_{D,rms} = \frac{4 P_{o}}{\sqrt{3} \sqrt{\pi} \sqrt{V_{o}} \sqrt{V_{pk}}}\\
+\end{align}
+
+Boost Diode with ripple
+\begin{align}
+i_{D,rms,t}(\theta) = \Delta^R_{rms} \big(B=i_{ref},A=i_{LR,pp},D=\delta_{D} \big)\\
+\text{\scalebox{0.75}{$i_{D,rms,t}(\theta) = \frac{\sqrt{\left(48 L^{2} P_{o}^{2} V_{o}^{2} f^{2} + V_{o}^{2} V_{pk}^{4} - 2 V_{o} V_{pk}^{5} \sin{\left(\theta \right)} + V_{pk}^{6} \sin^{2}{\left(\theta \right)}\right) \sin^{3}{\left(\theta \right)}}}{2 \sqrt{3} L V_{o}^{\frac{3}{2}} \sqrt{V_{pk}} f}$}}\\
+I_{D,rms} = \frac{\sqrt{\int\limits_{0}^{\pi} \frac{\left(48 L^{2} P_{o}^{2} V_{o}^{2} f^{2} + V_{o}^{2} V_{pk}^{4} - 2 V_{o} V_{pk}^{5} \sin{\left(\theta \right)} + V_{pk}^{6} \sin^{2}{\left(\theta \right)}\right) \sin^{3}{\left(\theta \right)}}{12 L^{2} V_{o}^{3} V_{pk} f^{2}}\, d\theta}}{\sqrt{\pi}}\\
+I_{D,rms} = \frac{\sqrt{3840 L^{2} P_{o}^{2} V_{o}^{2} f^{2} + 80 V_{o}^{2} V_{pk}^{4} - 45 \pi V_{o} V_{pk}^{5} + 64 V_{pk}^{6}}}{12 \sqrt{5} \sqrt{\pi} L V_{o}^{\frac{3}{2}} \sqrt{V_{pk}} f}\\
+\end{align}
+
+Boost Diode avg
+\begin{align}
+i_{D,avg,t}(\theta) = \Delta^R_{avg} \big(B=i_{ref}, D=\delta_{D} \big)\\
+I_{D,avg,t} = \frac{2 P_{o} \sin^{2}{\left(\theta \right)}}{V_{o}}\\
+I_{D,avg} = \frac{\int\limits_{0}^{\pi} \frac{2 P_{o} \sin^{2}{\left(\theta \right)}}{V_{o}}\, d\theta}{\pi}\\
+I_{D,avg} = \frac{P_{o}}{V_{o}}\\
+\end{align}
+
+Boost Diode switching loss timings
+\begin{align}
+K_{Q} = \frac{I_{rr,0}T_{rr,0}}{2\sqrt{I_{F,0}}}\\
+S = \frac{T_{rr,0}\frac{dI_{D,0}}{dt}}{I_{rr,0}} - 1\\
+I_{rr} = \sqrt{\frac{2\frac{dI_{D}}{dt}K_{Q}\sqrt{I_{F}}}{1+S}}\\
+T_{a} = \frac{I_{rr}}{\frac{dI_{D}}{dt}}\\
+T_{b} = ST_{a}\\
+E_{Q} = V_{DS}\big(\frac{I_{rr}}{2}T_{a}+\frac{I_{rr}}{4}T_{b}\big)\\
+E_{D} = \frac{V_{R}I_{rr}}{4}T_{b}\\
+\end{align}
+
+Boost Diode switching loss reverse recovery simple
+\begin{align}
+I_{F} = \frac{2 P_{o} \sin{\left(\theta \right)}}{V_{pk}}\\
+\frac{dI_{D}}{dt} = \frac{2 P_{o} \sin{\left(\theta \right)}}{T_{IR} V_{pk}}\\
+I_{rr} = \frac{2 \sqrt[4]{2} \sqrt{K_{Q}} P_{o}^{\frac{3}{4}} \sqrt{\sin^{\frac{3}{2}}{\left(\theta \right)}}}{\sqrt{T_{IR}} V_{pk}^{\frac{3}{4}} \sqrt{S + 1}}\\
+T_{a} = \frac{\sqrt[4]{2} \sqrt{K_{Q}} \sqrt{T_{IR}} \sqrt[4]{V_{pk}} \sqrt{\sin^{\frac{3}{2}}{\left(\theta \right)}}}{\sqrt[4]{P_{o}} \sqrt{S + 1} \sin{\left(\theta \right)}}\\
+T_{b} = \frac{\sqrt[4]{2} \sqrt{K_{Q}} S \sqrt{T_{IR}} \sqrt[4]{V_{pk}} \sqrt{\sin^{\frac{3}{2}}{\left(\theta \right)}}}{\sqrt[4]{P_{o}} \sqrt{S + 1} \sin{\left(\theta \right)}}\\
+E_{Qrr} = \frac{\sqrt{2} K_{Q} \sqrt{P_{o}} V_{o} \left(S + 2\right) \sqrt{\sin{\left(\theta \right)}}}{2 \sqrt{V_{pk}} \left(S + 1\right)}\\
+E_{Drr} = \frac{\sqrt{2} K_{Q} \sqrt{P_{o}} S V_{o} \sqrt{\sin{\left(\theta \right)}}}{2 \sqrt{V_{pk}} \left(S + 1\right)}\\
+P_{D,sw,rr}(\theta) = \frac{\sqrt{2} K_{Q} \sqrt{P_{o}} V_{o} f \sqrt{\sin{\left(\theta \right)}}}{\sqrt{V_{pk}}}\\
+P_{D,sw,rr} = \frac{\int\limits_{0}^{\pi} \frac{\sqrt{2} K_{Q} \sqrt{P_{o}} V_{o} f \sqrt{\sin{\left(\theta \right)}}}{\sqrt{V_{pk}}}\, d\theta}{\pi}\\
+P_{D,sw,rr} = \frac{\sqrt{2} K_{Q} \sqrt{P_{o}} V_{o} f \int\limits_{0}^{\pi} \left(1 - \frac{\left(\theta - \frac{\pi}{2}\right)^{2}}{4}\right)\, d\theta}{\pi \sqrt{V_{pk}}}\\
+P_{D,sw,rr} = \frac{K_{Q} \sqrt{P_{o}} V_{o} f \left(48 - \pi^{2}\right)}{24 \sqrt{2} \sqrt{V_{pk}}}\\
+\end{align}
+
+Boost Diode switching loss reverse recovery with ripple
+\begin{align}
+I_{F} = \frac{2 P_{o} \sin{\left(\theta \right)}}{V_{pk}} - \frac{V_{pk} \left(1 - \frac{V_{pk} \sin{\left(\theta \right)}}{V_{o}}\right) \sin{\left(\theta \right)}}{2 L f}\\
+\frac{dI_{D}}{dt} = \frac{\frac{2 P_{o} \sin{\left(\theta \right)}}{V_{pk}} - \frac{V_{pk} \left(1 - \frac{V_{pk} \sin{\left(\theta \right)}}{V_{o}}\right) \sin{\left(\theta \right)}}{2 L f}}{T_{IR}}\\
+I_{rr} = \frac{\sqrt{2} \sqrt{K_{Q}} \sqrt{\left(\frac{2 P_{o} \sin{\left(\theta \right)}}{V_{pk}} - \frac{V_{pk} \left(1 - \frac{V_{pk} \sin{\left(\theta \right)}}{V_{o}}\right) \sin{\left(\theta \right)}}{2 L f}\right)^{\frac{3}{2}}}}{\sqrt{T_{IR}} \sqrt{S + 1}}\\
+T_{a} = \frac{\sqrt{2} \sqrt{K_{Q}} \sqrt{T_{IR}} \sqrt{\left(\frac{2 P_{o} \sin{\left(\theta \right)}}{V_{pk}} - \frac{V_{pk} \left(1 - \frac{V_{pk} \sin{\left(\theta \right)}}{V_{o}}\right) \sin{\left(\theta \right)}}{2 L f}\right)^{\frac{3}{2}}}}{\sqrt{S + 1} \left(\frac{2 P_{o} \sin{\left(\theta \right)}}{V_{pk}} - \frac{V_{pk} \left(1 - \frac{V_{pk} \sin{\left(\theta \right)}}{V_{o}}\right) \sin{\left(\theta \right)}}{2 L f}\right)}\\
+T_{b} = \frac{\sqrt{2} \sqrt{K_{Q}} S \sqrt{T_{IR}} \sqrt{\left(\frac{2 P_{o} \sin{\left(\theta \right)}}{V_{pk}} - \frac{V_{pk} \left(1 - \frac{V_{pk} \sin{\left(\theta \right)}}{V_{o}}\right) \sin{\left(\theta \right)}}{2 L f}\right)^{\frac{3}{2}}}}{\sqrt{S + 1} \left(\frac{2 P_{o} \sin{\left(\theta \right)}}{V_{pk}} - \frac{V_{pk} \left(1 - \frac{V_{pk} \sin{\left(\theta \right)}}{V_{o}}\right) \sin{\left(\theta \right)}}{2 L f}\right)}\\
+E_{Qrr} = \frac{\sqrt{2} K_{Q} \sqrt{V_{o}} \sqrt{\left(4 L P_{o} V_{o} f - V_{o} V_{pk}^{2} + V_{pk}^{3} \sin{\left(\theta \right)}\right) \sin{\left(\theta \right)}} \left(S + 2\right)}{4 \sqrt{L} \sqrt{V_{pk}} \sqrt{f} \left(S + 1\right)}\\
+E_{Drr} = \frac{\sqrt{2} K_{Q} S \sqrt{V_{o}} \sqrt{\left(4 L P_{o} V_{o} f - V_{pk}^{2} \left(V_{o} - V_{pk} \sin{\left(\theta \right)}\right)\right) \sin{\left(\theta \right)}}}{4 \sqrt{L} \sqrt{V_{pk}} \sqrt{f} \left(S + 1\right)}\\
+\end{align}
+
+
+\begin{align}
+P_{D,sw,rr}(\theta) = \frac{\sqrt{2} K_{Q} \sqrt{V_{o}} \sqrt{f} \sqrt{\left(4 L P_{o} V_{o} f - V_{o} V_{pk}^{2} + V_{pk}^{3} \sin{\left(\theta \right)}\right) \sin{\left(\theta \right)}}}{2 \sqrt{L} \sqrt{V_{pk}}}\\
+P_{D,sw,rr} = \frac{\int\limits_{0}^{\pi} \frac{\sqrt{2} K_{Q} \sqrt{V_{o}} \sqrt{f} \sqrt{\left(4 L P_{o} V_{o} f - V_{o} V_{pk}^{2} + V_{pk}^{3} \sin{\left(\theta \right)}\right) \sin{\left(\theta \right)}}}{2 \sqrt{L} \sqrt{V_{pk}}}\, d\theta}{\pi}\\
+P_{D,sw,rr} = \frac{\sqrt{2} K_{Q} \sqrt{V_{o}} \sqrt{f} \int\limits_{0}^{\pi} \left(- \frac{\left(\theta - \frac{\pi}{2}\right)^{2} \left(4 L P_{o} V_{o} f - V_{o} V_{pk}^{2} + 2 V_{pk}^{3}\right)}{4 \sqrt{4 L P_{o} V_{o} f - V_{o} V_{pk}^{2} + V_{pk}^{3}}} + \sqrt{4 L P_{o} V_{o} f - V_{o} V_{pk}^{2} + V_{pk}^{3}}\right)\, d\theta}{2 \pi \sqrt{L} \sqrt{V_{pk}}}\\
+P_{D,sw,rr} = \frac{K_{Q} \sqrt{V_{o}} \sqrt{f} \left|{- 4 \pi^{2} L P_{o} V_{o} f + 192 L P_{o} V_{o} f - 48 V_{o} V_{pk}^{2} + \pi^{2} V_{o} V_{pk}^{2} - 2 \pi^{2} V_{pk}^{3} + 48 V_{pk}^{3}}\right|}{48 \sqrt{2} \sqrt{L} \sqrt{V_{pk}} \sqrt{4 L P_{o} V_{o} f - V_{o} V_{pk}^{2} + V_{pk}^{3}}}\\
+\end{align}
+
+Boost Diode switching loss junction capacitance
+\begin{align}
+P_{D,sw,c}(\theta) = \frac{C_{j}V_{D,bl}^{2}(\theta)f}{2}\\
+P_{D,sw,c}(\theta) = \frac{C_{j} V_{o}^{2} f}{2}\\
+P_{D,sw,c} = \frac{\int\limits_{0}^{\pi} \frac{C_{j} V_{o}^{2} f}{2}\, d\theta}{\pi}\\
+P_{D,sw,c} = \frac{C_{j} V_{o}^{2} f}{2}\\
+\end{align}
+
+Cap rms simple
+\begin{align}
+I_{C,rms} = \sqrt{I_{D,rms}^2 - (\frac{P_o}{V_o})^2}\\
+I_{C,rms} = \frac{P_{o} \sqrt{16 V_{o} - 3 \pi V_{pk}}}{\sqrt{3} \sqrt{\pi} V_{o} \sqrt{V_{pk}}}\\
+\end{align}
+
+Cap rms with ripple
+\begin{align}
+I_{C,rms} = \sqrt{I_{D,rms}^2 - (\frac{P_o}{V_o})^2}\\
+I_{C,rms} = \frac{\sqrt{3840 L^{2} P_{o}^{2} V_{o}^{2} f^{2} - 720 \pi L^{2} P_{o}^{2} V_{o} V_{pk} f^{2} + 80 V_{o}^{2} V_{pk}^{4} - 45 \pi V_{o} V_{pk}^{5} + 64 V_{pk}^{6}}}{12 \sqrt{5} \sqrt{\pi} L V_{o}^{\frac{3}{2}} \sqrt{V_{pk}} f}\\
+\end{align}
+\end{document}
